@@ -10,9 +10,9 @@
     <body>
         <div id="questionBox">
         </div>
-        <form class="mainQuizForm" id="mainQuizForm">
+        <form class="mainQuizForm" id="mainQuizForm" onsubmit="getUserAnwser(event)">
         </form>
-        <button onclick="nextQuestion()" type="submit">Next Question</button> 
+        <button type="submit" form="mainQuizForm" onclick="nextQuestion()" type="submit">Next Question</button> 
     </body>
     <script src="./quiz.js"></script>
 </html>
