@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="./main_indec_style.css"></link>
     <title>London</title>
 </head>
-    <body>
-        <div id="questionBox">
+    <body> 
+        <button id="startQuizBtn" class="startQuiz" onclick="startQuiz()">Start quiz</button>
+        <div id="questionBox" class="questionAndIndexContect">
         </div>
         <form class="mainQuizForm" id="mainQuizForm" onsubmit="getUserAnwser(event)">
         </form>
-        <button type="submit" form="mainQuizForm" onclick="nextQuestion()" type="submit">Next Question</button> 
     </body>
     <script src="./quiz.js"></script>
 </html>
