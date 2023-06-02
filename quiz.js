@@ -9,15 +9,26 @@ let userAnswersArray = []
 // let storedAnswersAndQuestions 
 
 // access main question area
+
 let MainQuizForm = document.getElementById('mainQuizForm')
 let getQuestionsBox = document.getElementById("questionBox")
 let form = document.getElementById('mainQuizForm')
+
+let formConatiner = document.getElementById('formContainer')
+
+let questionContainer = document.getElementById('questionContainer')
+
+// 
+let startBtnContainer = document.getElementById('startBtnContainer')
 let startQuizBtn = document.getElementById('startQuizBtn')
+
+let indexInformationContainer = document.getElementById('indexInformationContainer')
 
 // create element 
 
 let showUserQuizResults = document.createElement("div")
-
+let submitAnswerContaner = document.createElement('div')
+submitAnswerContaner.setAttribute('class', 'nextQuestionContaner')
 
 // first funaction
 function displayQuestionText(question="no question found", index){
@@ -43,7 +54,9 @@ function displayAnswersToQuestions(AnswersList, index){
         let newInput = document.createElement("input")
         let newLabel = document.createElement('label')
 
-        newQuestionDiv.setAttribute("class", "AnswerOpation")
+        newQuestionDiv.setAttribute("class", "answerOpation")
+        newQuestionDiv.setAttribute("id", "answerOpation")
+
         newInput.setAttribute("value", i)
         newInput.setAttribute("type", "radio")
         newInput.setAttribute("name", "answer")
@@ -57,18 +70,26 @@ function displayAnswersToQuestions(AnswersList, index){
     }
 
     // <button type="submit" form="mainQuizForm" id="nextQuestionBtn">Next Question</button> 
+    
     let submitAnswerBtn = document.createElement('button')
     submitAnswerBtn.setAttribute('form', 'mainQuizForm')
     submitAnswerBtn.setAttribute('type', 'submit')
+
     submitAnswerBtn.setAttribute('id', 'nextQuestionBtn')
+    submitAnswerBtn.setAttribute('class', 'nextQuestionBtn')
     submitAnswerBtn.textContent = 'Next Question'
-    MainQuizForm.appendChild(submitAnswerBtn)
+    submitAnswerContaner.appendChild(submitAnswerBtn)
+    document.body.appendChild(submitAnswerContaner)
 
 }
 
 
 // deletes all child elements in the MainQuiz div
 function deleteOldQuestions(){
+
+    while(submitAnswerContaner.lastChild){
+        submitAnswerContaner.removeChild(submitAnswerContaner.lastElementChild)
+    }
 
     while(MainQuizForm.lastElementChild){
         MainQuizForm.removeChild(MainQuizForm.lastElementChild)
@@ -94,6 +115,10 @@ function handleClick(event){
 
 // Shows the final result
 function showResults(AnswersList, QandAList){
+
+
+    formConatiner.style.display = 'none'
+    questionContainer.style.display = 'none'
     
     let endOfMessageQuiz = document.createElement('p')
     let userScore = document.createElement("p")
@@ -143,16 +168,27 @@ function nextQuestion(){
 }
 
 function startQuiz(){
+
     startQuizBtn.style.display = 'none'
+    startBtnContainer.style.display = 'none'
+    indexInformationContainer.style.display = 'none'
+
     displayQuestionNumber(storedAnswersAndQuestions, indexAnswer)
     displayQuestionText(storedAnswersAndQuestions, indexAnswer)
     displayAnswersToQuestions(storedAnswersAndQuestions, indexAnswer)
 }
 
 function reStartQuiz(){
+
+    formConatiner.style.display = 'flex'
+    questionContainer.style.display = 'flex'
+
+
     while(showUserQuizResults.lastElementChild){
         showUserQuizResults.removeChild(showUserQuizResults.lastElementChild)
     }
+
+
     indexAnswer = 0, userAnswersArray = []
     startQuiz()
 }

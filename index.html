@@ -4,15 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./main_indec_style.css"></link>
+    <link rel="stylesheet" href="./main.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Lato:wght@300;400&family=Mulish:wght@400;500&family=Poppins:wght@300;500;800&family=Roboto+Mono:wght@100;400&display=swap" rel="stylesheet">
     <title>London</title>
 </head>
     <body> 
-        <button id="startQuizBtn" class="startQuiz" onclick="startQuiz()">Start quiz</button>
-        <div id="questionBox" class="questionAndIndexContect">
+        <nav>
+            <h2>The London Quiz</h2>
+        </nav>
+
+        <div class="indexInformationContainer" id="indexInformationContainer">
+            <div class="indexInnerInformationContainer" id="indexInnerInformationContainer">
+                <h3>Ready to test your knowledge about London?</h3>
+                <p>London, England is arguably one of the top-5 most famous and historically significant cities in the world. But how much do you know about the city?</p>
+                <p>Answer the next 12 questions to find out.</p>
+            </div>
         </div>
-        <form class="mainQuizForm" id="mainQuizForm" onsubmit="getUserAnwser(event)">
-        </form>
+
+        <div class="startBtnContainer" id="startBtnContainer">
+            <button id="startQuizBtn" class="startQuiz" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <div id="questionContainer" class="questionContainer">
+            <div id="questionBox" class="questionAndIndexContect">
+            </div>
+        </div>
+        
+        <div class="formContainer" id="formContainer">
+            <form class="mainQuizForm" id="mainQuizForm" onsubmit="getUserAnwser(event)">
+            </form>
+        </div>
+        
+
     </body>
     <script src="./quiz.js"></script>
     <script src="./stored_questions_and_answers.js"></script>

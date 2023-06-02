@@ -1,0 +1,15 @@
+.answerOpation{
+
+    display: flex;
+    align-items: center;
+    
+    input{
+        margin-right: 7.5px;
+    }
+
+    label{
+        font-family: $title-font;
+        font-weight: 300;
+        font-size: 20px;
+    }
+}

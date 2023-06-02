@@ -1,0 +1,18 @@
+.startQuiz{
+    font-size: 18px;
+    padding: 5px 20px;
+    background-color: $light-blue;
+    border: 2px solid $light-blue;
+    border-radius: 20px;
+    color: $white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: relative;
+    font-family: $title-font;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+
+    &:hover{
+        
+       transform: translateY(-2px);
+    }
+}

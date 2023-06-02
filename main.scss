@@ -1,0 +1,16 @@
+// main file for styling 
+
+
+// Variables
+@import './sass/abstracts/variables';
+
+// Components
+@import './sass/components/start_quiz_btn';
+@import './sass/components/nav';
+@import './sass/components/headings';
+@import './sass/components/input_answer_container';
+@import './sass/components/next_question_btn';
+
+// Pages 
+@import './sass/pages/home';
+@import './sass/pages/quiz';
