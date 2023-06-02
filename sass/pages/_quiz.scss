@@ -44,3 +44,28 @@
     display: flex;
     justify-content: center;
 }
+
+.showUserQuizResultsContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+    .userQuizResults{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 10px;
+
+        p{
+            margin: 0px;
+            padding: 0px;
+            font-size: 24px;
+        }
+    }
+}
+
+.returnHomeButtonContainer{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+}

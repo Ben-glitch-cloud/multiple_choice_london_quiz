@@ -74,6 +74,40 @@ p {
   transform: translateY(-2px);
 }
 
+.returnHomeBtn {
+  font-size: 18px;
+  padding: 5px 20px;
+  background-color: #43B0F1;
+  border: 2px solid #43B0F1;
+  border-radius: 20px;
+  color: #E8EEF1;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+  font-family: "Poppins";
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
+}
+.returnHomeBtn:hover {
+  transform: translateY(-2px);
+}
+
+.reStartQuizBtn {
+  font-size: 18px;
+  padding: 5px 20px;
+  background-color: #43B0F1;
+  border: 2px solid #43B0F1;
+  border-radius: 20px;
+  color: #E8EEF1;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+  font-family: "Poppins";
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
+}
+.reStartQuizBtn:hover {
+  transform: translateY(-2px);
+}
+
 body {
   margin: 0px;
   padding: 0px;
@@ -145,4 +179,27 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.showUserQuizResultsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.showUserQuizResultsContainer .userQuizResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+}
+.showUserQuizResultsContainer .userQuizResults p {
+  margin: 0px;
+  padding: 0px;
+  font-size: 24px;
+}
+
+.returnHomeButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0px;
 }/*# sourceMappingURL=main.css.map */

@@ -26,8 +26,28 @@ let indexInformationContainer = document.getElementById('indexInformationContain
 
 // create element 
 
+let showUserQuizResultsContainer = document.createElement("div")
+showUserQuizResultsContainer.setAttribute('class', 'showUserQuizResultsContainer')
+showUserQuizResultsContainer.setAttribute('id', 'showUserQuizResultsContainer')
+
+
 let showUserQuizResults = document.createElement("div")
 let submitAnswerContaner = document.createElement('div')
+
+// return home button
+
+let returnHomeButtonContainer = document.createElement('div')
+let returnHomeButton = document.createElement('button')
+
+returnHomeButtonContainer.setAttribute('class', 'returnHomeButtonContainer')
+returnHomeButtonContainer.setAttribute('id', 'returnHomeButtonContainer')
+returnHomeButton.setAttribute('class', 'returnHomeBtn')
+returnHomeButton.setAttribute('id', 'returnHomeBtn')
+returnHomeButton.setAttribute('onclick', 'displayHomePage()')
+returnHomeButton.textContent = 'Return Home'
+
+returnHomeButtonContainer.appendChild(returnHomeButton)
+
 submitAnswerContaner.setAttribute('class', 'nextQuestionContaner')
 
 // first funaction
@@ -125,6 +145,7 @@ function showResults(AnswersList, QandAList){
     let restartQuiz = document.createElement("button")
 
     showUserQuizResults.setAttribute("id", "userQuizResults")
+    showUserQuizResults.setAttribute("class", "userQuizResults")
     userScore.setAttribute("id", "userScore")
 
     let overAllScore = 0
@@ -134,9 +155,10 @@ function showResults(AnswersList, QandAList){
     }
 
     userScore.textContent = `${overAllScore} / 12`
-    endOfMessageQuiz.textContent = 'Amazing Result'
+    endOfMessageQuiz.textContent = scoreResultMessage(overAllScore)
 
     restartQuiz.setAttribute('onclick', 'reStartQuiz()')
+    restartQuiz.setAttribute('class', 'reStartQuizBtn')
     restartQuiz.textContent = 'Restart Quiz'
 
 
@@ -144,7 +166,12 @@ function showResults(AnswersList, QandAList){
     showUserQuizResults.appendChild(endOfMessageQuiz)
     showUserQuizResults.appendChild(restartQuiz)
 
-    document.body.appendChild(showUserQuizResults)
+
+    showUserQuizResultsContainer.appendChild(showUserQuizResults)
+
+    document.body.appendChild(showUserQuizResultsContainer)
+
+    document.body.appendChild(returnHomeButtonContainer)
 }
 
 
@@ -157,11 +184,12 @@ function nextQuestion(){
             displayQuestionText(storedAnswersAndQuestions, indexAnswer)
             displayAnswersToQuestions(storedAnswersAndQuestions, indexAnswer)
         } else {
-            console.log(userAnswersArray.length, userAnswersArray, 'array')
             deleteOldQuestions()
             showResults(userAnswersArray, storedAnswersAndQuestions)
             let nextQuestionBtn = document.getElementById('nextQuestionBtn')
             nextQuestionBtn.remove()
+
+            
 
         }
   
@@ -188,9 +216,25 @@ function reStartQuiz(){
         showUserQuizResults.removeChild(showUserQuizResults.lastElementChild)
     }
 
-
     indexAnswer = 0, userAnswersArray = []
+    returnHomeButtonContainer.remove()
     startQuiz()
+}
+
+// delete the users score from the test
+function deleteUserScore(){
+    while(showUserQuizResults.lastElementChild){
+        showUserQuizResults.removeChild(showUserQuizResults.lastElementChild)
+    }
+
+    returnHomeButtonContainer.remove()
+}
+
+function displayHomePage(){
+    deleteUserScore()
+    startQuizBtn.style.display = 'block'
+    startBtnContainer.style.display = 'flex'
+    indexInformationContainer.style.display = 'flex'
 }
 
 // somthing is wrong county the user anwsers to the. 
