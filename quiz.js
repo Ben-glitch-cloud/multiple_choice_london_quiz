@@ -133,47 +133,6 @@ function handleClick(event){
     selectedQuestion = Number(event.target.value)
 }
 
-// Shows the final result
-function showResults(AnswersList, QandAList){
-
-
-    formConatiner.style.display = 'none'
-    questionContainer.style.display = 'none'
-    
-    let endOfMessageQuiz = document.createElement('p')
-    let userScore = document.createElement("p")
-    let restartQuiz = document.createElement("button")
-
-    showUserQuizResults.setAttribute("id", "userQuizResults")
-    showUserQuizResults.setAttribute("class", "userQuizResults")
-    userScore.setAttribute("id", "userScore")
-
-    let overAllScore = 0
-
-    for(let i = 0; i < QandAList.length; i++){
-        if(QandAList[i]['AnswerIndex'] === AnswersList[i]){overAllScore++}
-    }
-
-    userScore.textContent = `${overAllScore} / 12`
-    endOfMessageQuiz.textContent = scoreResultMessage(overAllScore)
-
-    restartQuiz.setAttribute('onclick', 'reStartQuiz()')
-    restartQuiz.setAttribute('class', 'reStartQuizBtn')
-    restartQuiz.textContent = 'Restart Quiz'
-
-
-    showUserQuizResults.appendChild(userScore)
-    showUserQuizResults.appendChild(endOfMessageQuiz)
-    showUserQuizResults.appendChild(restartQuiz)
-
-
-    showUserQuizResultsContainer.appendChild(showUserQuizResults)
-
-    document.body.appendChild(showUserQuizResultsContainer)
-
-    document.body.appendChild(returnHomeButtonContainer)
-}
-
 
 function nextQuestion(){ 
     // chnage the 11 to value of the array of questions 
@@ -200,6 +159,9 @@ function startQuiz(){
     startQuizBtn.style.display = 'none'
     startBtnContainer.style.display = 'none'
     indexInformationContainer.style.display = 'none'
+
+    formConatiner.style.display = 'flex'
+    questionContainer.style.display = 'flex'
 
     displayQuestionNumber(storedAnswersAndQuestions, indexAnswer)
     displayQuestionText(storedAnswersAndQuestions, indexAnswer)
@@ -232,6 +194,7 @@ function deleteUserScore(){
 
 function displayHomePage(){
     deleteUserScore()
+    indexAnswer = 0, userAnswersArray = []
     startQuizBtn.style.display = 'block'
     startBtnContainer.style.display = 'flex'
     indexInformationContainer.style.display = 'flex'
