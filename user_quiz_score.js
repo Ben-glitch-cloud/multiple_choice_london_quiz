@@ -22,8 +22,6 @@ function showResults(AnswersList, QandAList){
 
     for(let i = 0; i < QandAList.length; i++){
         if(QandAList[i]['AnswerIndex'] === AnswersList[i]){overAllScore++}
-
-        // This is where I will add question that where answeard incorrectly  
     }
 
     userScore.textContent = `${overAllScore} / 12`
@@ -44,4 +42,50 @@ function showResults(AnswersList, QandAList){
     document.body.appendChild(showUserQuizResultsContainer)
 
     document.body.appendChild(returnHomeButtonContainer)
+}
+
+function showWrongQuestionsList(AnswersList, QandAList){
+
+    let returnAnswerToWrongQuestionsCon = document.createElement('div')
+    returnAnswerToWrongQuestionsCon.setAttribute('class', 'wrongQuestionsContainer')
+    returnAnswerToWrongQuestionsCon.setAttribute('id', 'wrongQuestionsContainer')
+
+    for(let i = 0; i < AnswersList.length; i++){
+        console.log(AnswersList[i] !== QandAList[i]['AnswerIndex'], AnswersList[i], QandAList[i]['AnswerIndex'])
+        if(AnswersList[i] !== QandAList[i]['AnswerIndex']){
+
+            let answerExspandedContaner = document.createElement('div')
+
+            answerExspandedContaner.setAttribute('class', 'answerContainer')
+            answerExspandedContaner.setAttribute('id', 'answerContainer')
+
+            let answerExspandedText = document.createElement('p')
+            let userAnswer = document.createElement('p')
+            let corrertAnswer = document.createElement('p')
+
+            //
+            let userIndexAnswer = AnswersList[i]
+            
+            userAnswer.textContent = `Your answer : ${QandAList[i]['arrayOfAnswers'][userIndexAnswer]}`
+
+            let storedAnswer = QandAList[i]['AnswerIndex']
+
+            corrertAnswer.textContent = `Correct answer : ${QandAList[i]['arrayOfAnswers'][storedAnswer]}`
+
+            answerExspandedText.textContent = QandAList[i]['explanationToIncorrectAns']
+            // 
+
+            answerExspandedContaner.appendChild(userAnswer)
+            answerExspandedContaner.appendChild(corrertAnswer)
+            answerExspandedContaner.appendChild(answerExspandedText)
+
+            //
+            returnAnswerToWrongQuestionsCon.appendChild(answerExspandedContaner)
+        }
+    }
+
+    // this must be removed before the user restartes the quiz:)
+    document.body.appendChild(returnAnswerToWrongQuestionsCon)
+
+
 }

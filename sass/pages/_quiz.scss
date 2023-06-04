@@ -69,3 +69,19 @@
     justify-content: center;
     margin: 10px 0px;
 }
+
+.wrongQuestionsContainer{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .answerContainer{
+        width: 400px;
+
+        p{
+            font-size: 20px;
+        }
+    }
+}

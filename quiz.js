@@ -145,6 +145,7 @@ function nextQuestion(){
         } else {
             deleteOldQuestions()
             showResults(userAnswersArray, storedAnswersAndQuestions)
+            showWrongQuestionsList(userAnswersArray, storedAnswersAndQuestions)
             let nextQuestionBtn = document.getElementById('nextQuestionBtn')
             nextQuestionBtn.remove()
 
