@@ -39,6 +39,8 @@ let submitAnswerContaner = document.createElement('div')
 let returnHomeButtonContainer = document.createElement('div')
 let returnHomeButton = document.createElement('button')
 
+
+
 returnHomeButtonContainer.setAttribute('class', 'returnHomeButtonContainer')
 returnHomeButtonContainer.setAttribute('id', 'returnHomeButtonContainer')
 returnHomeButton.setAttribute('class', 'returnHomeBtn')
@@ -46,7 +48,14 @@ returnHomeButton.setAttribute('id', 'returnHomeBtn')
 returnHomeButton.setAttribute('onclick', 'displayHomePage()')
 returnHomeButton.textContent = 'Return Home'
 
+let restartQuiz = document.createElement("button")
+restartQuiz.setAttribute('onclick', 'reStartQuiz()')
+restartQuiz.setAttribute('class', 'reStartQuizBtn')
+restartQuiz.textContent = 'Restart Quiz'
+
+// change the name of returnHomeButtonContainer
 returnHomeButtonContainer.appendChild(returnHomeButton)
+returnHomeButtonContainer.appendChild(restartQuiz)
 
 submitAnswerContaner.setAttribute('class', 'nextQuestionContaner')
 
@@ -145,12 +154,10 @@ function nextQuestion(){
         } else {
             deleteOldQuestions()
             showResults(userAnswersArray, storedAnswersAndQuestions)
+            displayTitleOfWrongList()
             showWrongQuestionsList(userAnswersArray, storedAnswersAndQuestions)
             let nextQuestionBtn = document.getElementById('nextQuestionBtn')
             nextQuestionBtn.remove()
-
-            
-
         }
   
 }
@@ -169,11 +176,18 @@ function startQuiz(){
     displayAnswersToQuestions(storedAnswersAndQuestions, indexAnswer)
 }
 
+function removeRightAnswers(){
+    let wrongQuestionsContainer = document.getElementById('wrongQuestionsContainer')
+    let titleWrongUserAnswersCon = document.getElementById('titleWrongUserAnswersCon')
+    titleWrongUserAnswersCon.remove()
+    wrongQuestionsContainer.remove()
+    showUserQuizResultsContainer.remove()
+}
+
 function reStartQuiz(){
 
     formConatiner.style.display = 'flex'
     questionContainer.style.display = 'flex'
-
 
     while(showUserQuizResults.lastElementChild){
         showUserQuizResults.removeChild(showUserQuizResults.lastElementChild)
@@ -181,6 +195,7 @@ function reStartQuiz(){
 
     indexAnswer = 0, userAnswersArray = []
     returnHomeButtonContainer.remove()
+    removeRightAnswers()
     startQuiz()
 }
 
@@ -195,6 +210,7 @@ function deleteUserScore(){
 
 function displayHomePage(){
     deleteUserScore()
+    removeRightAnswers()
     indexAnswer = 0, userAnswersArray = []
     startQuizBtn.style.display = 'block'
     startBtnContainer.style.display = 'flex'

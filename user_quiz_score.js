@@ -12,7 +12,7 @@ function showResults(AnswersList, QandAList){
     
     let endOfMessageQuiz = document.createElement('p')
     let userScore = document.createElement("p")
-    let restartQuiz = document.createElement("button")
+   
 
     showUserQuizResults.setAttribute("id", "userQuizResults")
     showUserQuizResults.setAttribute("class", "userQuizResults")
@@ -27,21 +27,28 @@ function showResults(AnswersList, QandAList){
     userScore.textContent = `${overAllScore} / 12`
     endOfMessageQuiz.textContent = scoreResultMessage(overAllScore)
 
-    restartQuiz.setAttribute('onclick', 'reStartQuiz()')
-    restartQuiz.setAttribute('class', 'reStartQuizBtn')
-    restartQuiz.textContent = 'Restart Quiz'
-
-
     showUserQuizResults.appendChild(userScore)
     showUserQuizResults.appendChild(endOfMessageQuiz)
-    showUserQuizResults.appendChild(restartQuiz)
-
+    // showUserQuizResults.appendChild(restartQuiz)
 
     showUserQuizResultsContainer.appendChild(showUserQuizResults)
-
     document.body.appendChild(showUserQuizResultsContainer)
 
     document.body.appendChild(returnHomeButtonContainer)
+    
+    // work adding the buttons to one div
+}
+
+function displayTitleOfWrongList(){
+    let titleWrongUserAnswersCon = document.createElement('div')
+    let titleWrongUserAnswers = document.createElement('h3')
+    titleWrongUserAnswersCon.setAttribute('id', 'titleWrongUserAnswersCon')
+    titleWrongUserAnswersCon.setAttribute('class', 'titleWrongUserAnswersCon')
+    titleWrongUserAnswers.setAttribute('id', 'titleWrongUserAnswers')
+    titleWrongUserAnswers.setAttribute('class', 'titleWrongUserAnswers')
+    titleWrongUserAnswers.textContent = 'Where did you go Wrong?'
+    titleWrongUserAnswersCon.appendChild(titleWrongUserAnswers)
+    document.body.appendChild(titleWrongUserAnswersCon)
 }
 
 function showWrongQuestionsList(AnswersList, QandAList){
@@ -65,13 +72,9 @@ function showWrongQuestionsList(AnswersList, QandAList){
 
             //
             let userIndexAnswer = AnswersList[i]
-            
             userAnswer.textContent = `Your answer : ${QandAList[i]['arrayOfAnswers'][userIndexAnswer]}`
-
             let storedAnswer = QandAList[i]['AnswerIndex']
-
             corrertAnswer.textContent = `Correct answer : ${QandAList[i]['arrayOfAnswers'][storedAnswer]}`
-
             answerExspandedText.textContent = QandAList[i]['explanationToIncorrectAns']
             // 
 
@@ -86,6 +89,5 @@ function showWrongQuestionsList(AnswersList, QandAList){
 
     // this must be removed before the user restartes the quiz:)
     document.body.appendChild(returnAnswerToWrongQuestionsCon)
-
 
 }
