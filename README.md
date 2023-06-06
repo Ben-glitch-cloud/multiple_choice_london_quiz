@@ -53,14 +53,14 @@ As a user
 I would to see some instructions
 So I know how the test works from start to finish
 ```
-<p>User storie underway🏗</p>
+<p>User storie underway✅</p>
 
 ```
 As a user 
 I would like the web application to screen friendy 
 So I can start a test on my phone, tablet or computer
 ```
-<p>User storie not started 🛑</p>
+<p>User storie not started 🏗</p>
 
 <h3>Advanced User Stories</h3>
 
