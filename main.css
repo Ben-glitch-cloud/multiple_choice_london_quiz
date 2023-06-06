@@ -156,6 +156,56 @@ body {
   text-align: center;
 }
 
+.instructions {
+  margin-bottom: 100px;
+}
+.instructions .instructionsHeadingAndInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.instructions .instructionsHeadingAndInfo p {
+  font-size: 18px;
+}
+.instructions .instructionsContaner {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 30px 0px;
+}
+.instructions .instructionsContaner .instructionsContanerHolder {
+  width: 620px;
+  display: flex;
+  flex-wrap: wrap;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  row-gap: 30px;
+}
+.instructions .instructionsContaner .instructionsContanerHolder .instructionsContanerItem {
+  width: 250px;
+  padding: 15px 20px;
+  text-align: justify;
+  font-size: 18px;
+  background: #43B0F1;
+  border-radius: 10px;
+  position: relative;
+  bottom: 0px;
+  transition: ease-in-out;
+  transition-duration: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.instructions .instructionsContaner .instructionsContanerHolder .instructionsContanerItem p {
+  margin: 0px;
+  padding: 0px;
+  color: #E8EEF1;
+}
+.instructions .instructionsContaner .instructionsContanerHolder .instructionsContanerItem:hover {
+  background: #057DCD;
+  transform: translateY(-2px);
+}
+
 .questionContainer {
   width: 100%;
   display: flex;

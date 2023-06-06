@@ -14,6 +14,8 @@ let MainQuizForm = document.getElementById('mainQuizForm')
 let getQuestionsBox = document.getElementById("questionBox")
 let form = document.getElementById('mainQuizForm')
 
+let instructions = document.getElementById('instructions')
+
 let formConatiner = document.getElementById('formContainer')
 
 let questionContainer = document.getElementById('questionContainer')
@@ -169,6 +171,7 @@ function startQuiz(){
     startQuizBtn.style.display = 'none'
     startBtnContainer.style.display = 'none'
     indexInformationContainer.style.display = 'none'
+    instructions.style.display = 'none'
 
     formConatiner.style.display = 'flex'
     questionContainer.style.display = 'flex'
@@ -222,6 +225,7 @@ function displayHomePage(){
     startQuizBtn.style.display = 'block'
     startBtnContainer.style.display = 'flex'
     indexInformationContainer.style.display = 'flex'
+    instructions.style.display = 'block'
 }
 
 // somthing is wrong county the user anwsers to the. 
