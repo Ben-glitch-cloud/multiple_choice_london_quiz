@@ -69,6 +69,7 @@
     justify-content: center;
     margin: 10px 0px;
     column-gap: 20px;
+    
 }
 
 .wrongQuestionsContainer{
@@ -77,6 +78,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 80px;
 
     .answerContainer{
         width: 500px;
@@ -88,9 +90,7 @@
 }
 
 .titleWrongUserAnswersCon{
-
     width: 100%;
     display: flex;
     justify-content: center;
-
 }

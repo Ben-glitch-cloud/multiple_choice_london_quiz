@@ -53,18 +53,21 @@ function displayTitleOfWrongList(){
 
 function showWrongQuestionsList(AnswersList, QandAList){
 
+    let wrongAnswerFound = false
     let returnAnswerToWrongQuestionsCon = document.createElement('div')
     returnAnswerToWrongQuestionsCon.setAttribute('class', 'wrongQuestionsContainer')
     returnAnswerToWrongQuestionsCon.setAttribute('id', 'wrongQuestionsContainer')
 
     for(let i = 0; i < AnswersList.length; i++){
-        console.log(AnswersList[i] !== QandAList[i]['AnswerIndex'], AnswersList[i], QandAList[i]['AnswerIndex'])
         if(AnswersList[i] !== QandAList[i]['AnswerIndex']){
+            wrongAnswerFound = true
 
             let answerExspandedContaner = document.createElement('div')
+            let answerBorderBreak = document.createElement('div')
 
             answerExspandedContaner.setAttribute('class', 'answerContainer')
             answerExspandedContaner.setAttribute('id', 'answerContainer')
+            answerBorderBreak.setAttribute('class', 'answerBorderBreak')
 
             let answerExspandedText = document.createElement('p')
             let userAnswer = document.createElement('p')
@@ -72,7 +75,13 @@ function showWrongQuestionsList(AnswersList, QandAList){
 
             //
             let userIndexAnswer = AnswersList[i]
-            userAnswer.textContent = `Your answer : ${QandAList[i]['arrayOfAnswers'][userIndexAnswer]}`
+
+            if(QandAList[i]['arrayOfAnswers'][userIndexAnswer] === undefined){
+                userAnswer.textContent = "You skiped this Question"
+            } else {
+                userAnswer.textContent = `Your answer : ${QandAList[i]['arrayOfAnswers'][userIndexAnswer]}`
+            }
+        
             let storedAnswer = QandAList[i]['AnswerIndex']
             corrertAnswer.textContent = `Correct answer : ${QandAList[i]['arrayOfAnswers'][storedAnswer]}`
             answerExspandedText.textContent = QandAList[i]['explanationToIncorrectAns']
@@ -80,14 +89,17 @@ function showWrongQuestionsList(AnswersList, QandAList){
 
             answerExspandedContaner.appendChild(userAnswer)
             answerExspandedContaner.appendChild(corrertAnswer)
-            answerExspandedContaner.appendChild(answerExspandedText)
+            answerExspandedContaner.appendChild(answerExspandedText) 
+            answerExspandedContaner.appendChild(answerBorderBreak) 
 
             //
             returnAnswerToWrongQuestionsCon.appendChild(answerExspandedContaner)
         }
     }
-
     // this must be removed before the user restartes the quiz:)
+
+    if(wrongAnswerFound){ displayTitleOfWrongList() }
+
     document.body.appendChild(returnAnswerToWrongQuestionsCon)
 
 }

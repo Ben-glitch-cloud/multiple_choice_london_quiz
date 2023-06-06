@@ -154,8 +154,10 @@ function nextQuestion(){
         } else {
             deleteOldQuestions()
             showResults(userAnswersArray, storedAnswersAndQuestions)
-            displayTitleOfWrongList()
+            //
+            
             showWrongQuestionsList(userAnswersArray, storedAnswersAndQuestions)
+            //
             let nextQuestionBtn = document.getElementById('nextQuestionBtn')
             nextQuestionBtn.remove()
         }
@@ -179,9 +181,14 @@ function startQuiz(){
 function removeRightAnswers(){
     let wrongQuestionsContainer = document.getElementById('wrongQuestionsContainer')
     let titleWrongUserAnswersCon = document.getElementById('titleWrongUserAnswersCon')
-    titleWrongUserAnswersCon.remove()
-    wrongQuestionsContainer.remove()
-    showUserQuizResultsContainer.remove()
+
+    if(titleWrongUserAnswersCon){ titleWrongUserAnswersCon.remove() }
+
+    if(wrongQuestionsContainer){  wrongQuestionsContainer.remove() }
+
+    if(showUserQuizResultsContainer){  showUserQuizResultsContainer.remove() }
+   
+   
 }
 
 function reStartQuiz(){
