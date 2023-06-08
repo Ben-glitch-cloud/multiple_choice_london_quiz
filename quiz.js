@@ -5,7 +5,6 @@ let selectedQuestion
 
 let userAnswersArray = []
 
-//Stored answers and questions 
 // let storedAnswersAndQuestions 
 
 // access main question area
@@ -13,18 +12,13 @@ let userAnswersArray = []
 let MainQuizForm = document.getElementById('mainQuizForm')
 let getQuestionsBox = document.getElementById("questionBox")
 let form = document.getElementById('mainQuizForm')
-
 let instructions = document.getElementById('instructions')
-
 let formConatiner = document.getElementById('formContainer')
-
 let questionContainer = document.getElementById('questionContainer')
-
-// 
 let startBtnContainer = document.getElementById('startBtnContainer')
 let startQuizBtn = document.getElementById('startQuizBtn')
-
 let indexInformationContainer = document.getElementById('indexInformationContainer')
+let returnHomeBtn = document.getElementById('returnHomeBtn')
 
 // create element 
 
@@ -41,8 +35,7 @@ let submitAnswerContaner = document.createElement('div')
 let returnHomeButtonContainer = document.createElement('div')
 let returnHomeButton = document.createElement('button')
 
-
-
+// setAbttributes for elements
 returnHomeButtonContainer.setAttribute('class', 'returnHomeButtonContainer')
 returnHomeButtonContainer.setAttribute('id', 'returnHomeButtonContainer')
 returnHomeButton.setAttribute('class', 'returnHomeBtn')
@@ -76,66 +69,45 @@ function displayQuestionNumber(AnswersList, index){
     getQuestionsBox.appendChild(indexQuestionPlace)
 }
 
-
 // loop through all potenal answers
 
 function displayAnswersToQuestions(AnswersList, index){
-    for(let i = 0; i < AnswersList[index]['arrayOfAnswers'].length; i++){
 
+    for(let i = 0; i < AnswersList[index]['arrayOfAnswers'].length; i++){
         let newQuestionDiv = document.createElement("div") 
         let newInput = document.createElement("input")
         let newLabel = document.createElement('label')
-
         newQuestionDiv.setAttribute("class", "answerOpation")
         newQuestionDiv.setAttribute("id", "answerOpation")
-
         newInput.setAttribute("value", i)
         newInput.setAttribute("type", "radio")
         newInput.setAttribute("name", "answer")
         newInput.setAttribute("onclick", 'handleClick(event)')
-        
         newLabel.innerHTML = AnswersList[index]['arrayOfAnswers'][i]
-
         newQuestionDiv.appendChild(newInput)
         newQuestionDiv.appendChild(newLabel)
         MainQuizForm.appendChild(newQuestionDiv)
     }
-
-    // <button type="submit" form="mainQuizForm" id="nextQuestionBtn">Next Question</button> 
-    
     let submitAnswerBtn = document.createElement('button')
     submitAnswerBtn.setAttribute('form', 'mainQuizForm')
     submitAnswerBtn.setAttribute('type', 'submit')
-
     submitAnswerBtn.setAttribute('id', 'nextQuestionBtn')
     submitAnswerBtn.setAttribute('class', 'nextQuestionBtn')
     submitAnswerBtn.textContent = 'Next Question'
     submitAnswerContaner.appendChild(submitAnswerBtn)
     document.body.appendChild(submitAnswerContaner)
-
 }
 
 
 // deletes all child elements in the MainQuiz div
 function deleteOldQuestions(){
-
-    while(submitAnswerContaner.lastChild){
-        submitAnswerContaner.removeChild(submitAnswerContaner.lastElementChild)
-    }
-
-    while(MainQuizForm.lastElementChild){
-        MainQuizForm.removeChild(MainQuizForm.lastElementChild)
-    }
-
-    while(getQuestionsBox.lastElementChild){
-        getQuestionsBox.removeChild(getQuestionsBox.lastElementChild)
-    }
-
+    while(submitAnswerContaner.lastChild){submitAnswerContaner.removeChild(submitAnswerContaner.lastElementChild)}
+    while(MainQuizForm.lastElementChild){MainQuizForm.removeChild(MainQuizForm.lastElementChild)}
+    while(getQuestionsBox.lastElementChild){getQuestionsBox.removeChild(getQuestionsBox.lastElementChild)}
 }
 
 function getUserAnwser(event){
     event.preventDefault();
-    console.log(selectedQuestion, 'pushed saved value')
     userAnswersArray.push(selectedQuestion)
     selectedQuestion = null
     nextQuestion()
@@ -147,7 +119,6 @@ function handleClick(event){
 
 
 function nextQuestion(){ 
-    // chnage the 11 to value of the array of questions 
         if(indexAnswer < 11){
             deleteOldQuestions()
             indexAnswer++
@@ -157,26 +128,20 @@ function nextQuestion(){
         } else {
             deleteOldQuestions()
             showResults(userAnswersArray, storedAnswersAndQuestions)
-            //
-            
             showWrongQuestionsList(userAnswersArray, storedAnswersAndQuestions)
-            //
-            let nextQuestionBtn = document.getElementById('nextQuestionBtn')
-            nextQuestionBtn.remove()
+            returnHomeBtn.style.display = 'none'
         }
   
 }
 
 function startQuiz(){
-
     startQuizBtn.style.display = 'none'
     startBtnContainer.style.display = 'none'
     indexInformationContainer.style.display = 'none'
     instructions.style.display = 'none'
-
     formConatiner.style.display = 'flex'
     questionContainer.style.display = 'flex'
-
+    returnHomeBtn.style.display = 'block'
     displayQuestionNumber(storedAnswersAndQuestions, indexAnswer)
     displayQuestionText(storedAnswersAndQuestions, indexAnswer)
     displayAnswersToQuestions(storedAnswersAndQuestions, indexAnswer)
@@ -185,25 +150,15 @@ function startQuiz(){
 function removeRightAnswers(){
     let wrongQuestionsContainer = document.getElementById('wrongQuestionsContainer')
     let titleWrongUserAnswersCon = document.getElementById('titleWrongUserAnswersCon')
-
     if(titleWrongUserAnswersCon){ titleWrongUserAnswersCon.remove() }
-
     if(wrongQuestionsContainer){  wrongQuestionsContainer.remove() }
-
     if(showUserQuizResultsContainer){  showUserQuizResultsContainer.remove() }
-   
-   
 }
 
 function reStartQuiz(){
-
     formConatiner.style.display = 'flex'
     questionContainer.style.display = 'flex'
-
-    while(showUserQuizResults.lastElementChild){
-        showUserQuizResults.removeChild(showUserQuizResults.lastElementChild)
-    }
-
+    while(showUserQuizResults.lastElementChild){ showUserQuizResults.removeChild(showUserQuizResults.lastElementChild)}
     indexAnswer = 0, userAnswersArray = []
     returnHomeButtonContainer.remove()
     removeRightAnswers()
@@ -212,16 +167,12 @@ function reStartQuiz(){
 
 // delete the users score from the test
 function deleteUserScore(){
-    while(showUserQuizResults.lastElementChild){
-        showUserQuizResults.removeChild(showUserQuizResults.lastElementChild)
-    }
-
+    while(showUserQuizResults.lastElementChild){ showUserQuizResults.removeChild(showUserQuizResults.lastElementChild) }
     returnHomeButtonContainer.remove()
 }
 
 function displayHomePage(){
-    deleteUserScore()
-    removeRightAnswers()
+    deleteUserScore(), removeRightAnswers()
     indexAnswer = 0, userAnswersArray = []
     startQuizBtn.style.display = 'block'
     startBtnContainer.style.display = 'flex'
@@ -229,4 +180,10 @@ function displayHomePage(){
     instructions.style.display = 'block'
 }
 
-// somthing is wrong county the user anwsers to the. 
+function returnHomeFromTest(){
+    console.log('hello world')
+    deleteOldQuestions()
+    displayHomePage()
+    returnHomeBtn.style.display = 'none'
+}
+
