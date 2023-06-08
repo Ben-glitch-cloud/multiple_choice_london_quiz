@@ -136,6 +136,13 @@ body {
   justify-content: center;
 }
 
+@media (max-width: 400px) {
+  .startBtnContainer button {
+    width: 80%;
+    font-size: 24px;
+    border-radius: 25px;
+  }
+}
 .indexInformationContainer {
   width: 100%;
   display: flex;
@@ -156,6 +163,22 @@ body {
   text-align: center;
 }
 
+@media (max-width: 850px) {
+  .indexInformationContainer .indexInnerInformationContainer {
+    width: 90%;
+  }
+}
+@media (max-width: 550px) {
+  .indexInformationContainer .indexInnerInformationContainer {
+    width: 100%;
+  }
+  .indexInformationContainer .indexInnerInformationContainer h3 {
+    text-align: center;
+  }
+  .indexInformationContainer .indexInnerInformationContainer p {
+    width: 90%;
+  }
+}
 .instructions {
   margin-bottom: 100px;
 }
@@ -206,6 +229,25 @@ body {
   transform: translateY(-2px);
 }
 
+@media (max-width: 850px) {
+  .instructions .instructionsHeadingAndInfo p {
+    width: 90%;
+    text-align: center;
+  }
+}
+@media (max-width: 700px) {
+  .instructions .instructionsHeadingAndInfo p {
+    width: 90%;
+    text-align: center;
+  }
+  .instructions .instructionsContaner .instructionsContanerHolder {
+    width: 100%;
+    justify-content: center;
+  }
+  .instructions .instructionsContaner .instructionsContanerHolder .instructionsContanerItem {
+    width: 70%;
+  }
+}
 .questionContainer {
   width: 100%;
   display: flex;
