@@ -114,6 +114,23 @@ body{
                 transition: ease-in-out;
                 transition-duration: 0.3s;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                position: relative;
+
+                .instructionCount{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: $white;
+                    position: absolute;
+                    left: -10px;
+                    top: -10px;
+                    background: $dark-blue;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 15px;
+                    font-family: $title-font;
+                    
+                }
 
                 p{
                     margin: 0px;
