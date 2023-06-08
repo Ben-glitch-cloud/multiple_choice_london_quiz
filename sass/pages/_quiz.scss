@@ -23,6 +23,26 @@
     }
 }
 
+@media (max-width: $breakpoint-smartPhone-screen-medium){
+    .questionContainer{
+
+        .questionAndIndexContect{
+            width: 90%;
+            align-items: center;
+            
+            #questionIndex{
+                font-size: 26px;
+            }
+            
+            p{
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+
 .formContainer{
     width: 100%;
     display: flex;
@@ -36,6 +56,18 @@
         width: 400px;
         flex-direction: column;
         row-gap: 10px;
+    }
+}
+
+@media (max-width: $breakpoint-smartPhone-screen-medium){
+    .formContainer{
+
+        margin: 20px 0px;
+       
+        .mainQuizForm{
+            width: 90%;
+            
+        }
     }
 }
 
@@ -64,13 +96,44 @@
     }
 }
 
+@media (max-width: $breakpoint-smartPhone-screen-medium){
+    .showUserQuizResultsContainer{
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+//
+
 .returnHomeButtonContainer{
     display: flex;
     justify-content: center;
     margin: 10px 0px;
     column-gap: 20px;
-    
 }
+
+@media (max-width: $breakpoint-smartPhone-screen-medium){
+    .returnHomeButtonContainer{
+        flex-direction: column;
+        display: flex;
+        row-gap: 30px;
+        align-items: center;
+
+        .returnHomeBtn{
+            width: 80%;
+            font-size: 24px;
+            border-radius: 25px;
+        }
+
+        .reStartQuizBtn{
+            width: 80%;
+            font-size: 24px;
+            border-radius: 25px;
+        }
+    }
+}
+
+//
 
 .wrongQuestionsContainer{
 
@@ -85,6 +148,21 @@
 
         p{
             font-size: 20px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-tablet-screen-medium){
+    .wrongQuestionsContainer{
+
+
+    
+        .answerContainer{
+            width: 90%;
+    
+            p{
+                font-size: 20px;
+            }
         }
     }
 }

@@ -69,11 +69,15 @@ function showWrongQuestionsList(AnswersList, QandAList){
             answerExspandedContaner.setAttribute('id', 'answerContainer')
             answerBorderBreak.setAttribute('class', 'answerBorderBreak')
 
+            let answerShownToUsers = document.createElement('p')
             let answerExspandedText = document.createElement('p')
             let userAnswer = document.createElement('p')
             let corrertAnswer = document.createElement('p')
 
-            //
+            // the Question shown to the user
+            answerShownToUsers.textContent = `Question Asked: ${QandAList[i]['questionFireOfLondon']}`
+            console.log(QandAList[i]['questionFireOfLondon'], 'find answer')
+
             let userIndexAnswer = AnswersList[i]
 
             if(QandAList[i]['arrayOfAnswers'][userIndexAnswer] === undefined){
@@ -87,6 +91,7 @@ function showWrongQuestionsList(AnswersList, QandAList){
             answerExspandedText.textContent = QandAList[i]['explanationToIncorrectAns']
             // 
 
+            answerExspandedContaner.appendChild(answerShownToUsers)
             answerExspandedContaner.appendChild(userAnswer)
             answerExspandedContaner.appendChild(corrertAnswer)
             answerExspandedContaner.appendChild(answerExspandedText) 

@@ -71,6 +71,7 @@ function displayQuestionText(question="no question found", index){
 
 function displayQuestionNumber(AnswersList, index){
     let indexQuestionPlace = document.createElement("p")
+    indexQuestionPlace.setAttribute('id', 'questionIndex')
     indexQuestionPlace.innerText = `Question ${AnswersList[index]['index']}`
     getQuestionsBox.appendChild(indexQuestionPlace)
 }

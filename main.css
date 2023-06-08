@@ -281,6 +281,18 @@ body {
   font-size: 18px;
 }
 
+@media (max-width: 400px) {
+  .questionContainer .questionAndIndexContect {
+    width: 90%;
+    align-items: center;
+  }
+  .questionContainer .questionAndIndexContect #questionIndex {
+    font-size: 26px;
+  }
+  .questionContainer .questionAndIndexContect p {
+    text-align: center;
+  }
+}
 .formContainer {
   width: 100%;
   display: flex;
@@ -296,6 +308,14 @@ body {
   row-gap: 10px;
 }
 
+@media (max-width: 400px) {
+  .formContainer {
+    margin: 20px 0px;
+  }
+  .formContainer .mainQuizForm {
+    width: 90%;
+  }
+}
 .nextQuestionContaner {
   width: 100%;
   display: flex;
@@ -319,6 +339,12 @@ body {
   font-size: 24px;
 }
 
+@media (max-width: 400px) {
+  .showUserQuizResultsContainer {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
 .returnHomeButtonContainer {
   display: flex;
   justify-content: center;
@@ -327,6 +353,24 @@ body {
        column-gap: 20px;
 }
 
+@media (max-width: 400px) {
+  .returnHomeButtonContainer {
+    flex-direction: column;
+    display: flex;
+    row-gap: 30px;
+    align-items: center;
+  }
+  .returnHomeButtonContainer .returnHomeBtn {
+    width: 80%;
+    font-size: 24px;
+    border-radius: 25px;
+  }
+  .returnHomeButtonContainer .reStartQuizBtn {
+    width: 80%;
+    font-size: 24px;
+    border-radius: 25px;
+  }
+}
 .wrongQuestionsContainer {
   display: flex;
   flex-direction: column;
@@ -341,6 +385,14 @@ body {
   font-size: 20px;
 }
 
+@media (max-width: 550px) {
+  .wrongQuestionsContainer .answerContainer {
+    width: 90%;
+  }
+  .wrongQuestionsContainer .answerContainer p {
+    font-size: 20px;
+  }
+}
 .titleWrongUserAnswersCon {
   width: 100%;
   display: flex;
