@@ -38,9 +38,11 @@ let returnHomeButton = document.createElement('button')
 // setAbttributes for elements
 returnHomeButtonContainer.setAttribute('class', 'returnHomeButtonContainer')
 returnHomeButtonContainer.setAttribute('id', 'returnHomeButtonContainer')
+
 returnHomeButton.setAttribute('class', 'returnHomeBtn')
 returnHomeButton.setAttribute('id', 'returnHomeBtn')
 returnHomeButton.setAttribute('onclick', 'displayHomePage()')
+
 returnHomeButton.textContent = 'Return Home'
 
 let restartQuiz = document.createElement("button")
@@ -79,20 +81,20 @@ function displayAnswersToQuestions(AnswersList, index){
         let newLabel = document.createElement('label')
         newQuestionDiv.setAttribute("class", "answerOpation")
         newQuestionDiv.setAttribute("id", "answerOpation")
-        newInput.setAttribute("value", i)
-        newInput.setAttribute("type", "radio")
-        newInput.setAttribute("name", "answer")
-        newInput.setAttribute("onclick", 'handleClick(event)')
+        let newInputObjectsetAttribute = {"value": i, "type": "radio", "name": "answer", "onclick": 'handleClick(event)'}
+        for(const key in newInputObjectsetAttribute){
+            newInput.setAttribute(`${key}`, `${newInputObjectsetAttribute[key]}`)
+        }
         newLabel.innerHTML = AnswersList[index]['arrayOfAnswers'][i]
         newQuestionDiv.appendChild(newInput)
         newQuestionDiv.appendChild(newLabel)
         MainQuizForm.appendChild(newQuestionDiv)
     }
     let submitAnswerBtn = document.createElement('button')
-    submitAnswerBtn.setAttribute('form', 'mainQuizForm')
-    submitAnswerBtn.setAttribute('type', 'submit')
-    submitAnswerBtn.setAttribute('id', 'nextQuestionBtn')
-    submitAnswerBtn.setAttribute('class', 'nextQuestionBtn')
+    const submitAnswerBtnObjectAttributes = {'form': 'mainQuizForm', 'type': 'submit', 'id': 'nextQuestionBtn', 'class': 'nextQuestionBtn'}
+    for(const key in submitAnswerBtnObjectAttributes){
+        submitAnswerBtn.setAttribute(`${key}`, `${submitAnswerBtnObjectAttributes[key]}`)
+    }
     submitAnswerBtn.textContent = 'Next Question'
     submitAnswerContaner.appendChild(submitAnswerBtn)
     document.body.appendChild(submitAnswerContaner)
