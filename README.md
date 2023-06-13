@@ -1,11 +1,13 @@
 <h1>multiple_choice_london_quiz</h1>
 
+<a href=''>Link to Quiz Coming soon</a>
+
 <h2>Description</h2>
 <p>London is a big place, with so much history and culture. Thats why this project is focused on creating a mutible choice quiz to test your knowledge of the city.</p>
 
 <h2>Getting Started</h2>
 
-<p>The current web application is not finished</p>
+<p>Coming Soon</p>
 
 <h2>User Stories</h2>
 
@@ -83,6 +85,5 @@ So I can practice my knowledge of London
 <p>HTML5</p>
 <p>CSS3 / SASS</p>
 <p>Vanilla Javascript</p>
-<p>jasmine</p>
 
 
