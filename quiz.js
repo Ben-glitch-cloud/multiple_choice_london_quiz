@@ -60,7 +60,7 @@ submitAnswerContaner.setAttribute('class', 'nextQuestionContaner')
 function displayQuestionText(question="no question found", index){
     let newQuestion = document.createElement("p")
     newQuestion.setAttribute('class', 'question')
-    newQuestion.innerHTML = question[index]['questionFireOfLondon']
+    newQuestion.innerHTML = question[index]['questionString']
     getQuestionsBox.appendChild(newQuestion)
 }
 

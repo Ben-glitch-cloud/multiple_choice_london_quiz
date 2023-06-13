@@ -1,6 +1,7 @@
 function scoreResultMessage(userScore){
-    if(userScore >= 10){ return 'A Perfect Score'}
-    if(userScore < 10 && userScore >= 7){ return 'Good Score'}
+    if(userScore === 12){ return 'A Perfect Score'}
+    if(userScore < 11 &&  userScore >= 9){ return 'A Great Score'}
+    if(userScore < 9 && userScore >= 7){ return 'Good Score'}
     if(userScore < 7 && userScore >= 4){ return 'Not a score Bad'}
     if(userScore < 4){ return 'Terrible Score'}
 }
@@ -57,8 +58,7 @@ function showWrongQuestionsList(AnswersList, QandAList){
             let answerExspandedText = document.createElement('p')
             let userAnswer = document.createElement('p')
             let corrertAnswer = document.createElement('p')
-            answerShownToUsers.textContent = `Question Asked: ${QandAList[i]['questionFireOfLondon']}`
-            console.log(QandAList[i]['questionFireOfLondon'], 'find answer')
+            answerShownToUsers.textContent = `Question Asked: ${QandAList[i]['questionString']}`
             if(QandAList[i]['arrayOfAnswers'][userIndexAnswer] === undefined){
                 userAnswer.textContent = "You skiped this Question"
             } else {
@@ -66,7 +66,7 @@ function showWrongQuestionsList(AnswersList, QandAList){
             }
             let storedAnswer = QandAList[i]['AnswerIndex']
             corrertAnswer.textContent = `Correct answer : ${QandAList[i]['arrayOfAnswers'][storedAnswer]}`
-            answerExspandedText.textContent = QandAList[i]['explanationToIncorrectAns']
+            answerExspandedText.textContent = `Explanation : ${QandAList[i]['explanationToIncorrectAns']}`
             answerExspandedContaner.appendChild(answerShownToUsers)
             answerExspandedContaner.appendChild(userAnswer)
             answerExspandedContaner.appendChild(corrertAnswer)

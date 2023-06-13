@@ -36,6 +36,25 @@ nav .returnHomeBtn {
   top: 23px;
 }
 
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    position: relative;
+  }
+  nav h2 {
+    position: relative;
+  }
+  nav .returnHomeBtn {
+    position: relative;
+    margin: 6px;
+    width: 160px;
+    top: 0px;
+    right: 0px;
+  }
+}
 h2 {
   margin: 0px;
   padding: 0px;
@@ -310,7 +329,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px 10px;
+  margin: 10px 0px;
 }
 .formContainer .mainQuizForm {
   display: flex;

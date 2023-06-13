@@ -20,5 +20,27 @@ nav{
        top: 23px;
     }
 
-    
 }
+
+@media (max-width: $breakpoint-cp-screen-Xsmall){
+    nav{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 140px;
+        position: relative;
+
+        h2{
+            position: relative;
+        }
+
+        .returnHomeBtn{
+            position: relative;
+            margin: 6px;
+            width: 160px;
+            top: 0px;
+            right: 0px;
+        }
+    }
+}
+
