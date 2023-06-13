@@ -1,9 +1,7 @@
 
-let indexAnswer = 0
+// global values to be used later
 
-let selectedQuestion 
-
-let userAnswersArray = []
+let indexAnswer = 0, selectedQuestion, userAnswersArray = []
 
 // let storedAnswersAndQuestions 
 
@@ -77,8 +75,7 @@ function displayAnswersToQuestions(AnswersList, index){
 
     for(let i = 0; i < AnswersList[index]['arrayOfAnswers'].length; i++){
         let newQuestionDiv = document.createElement("div") 
-        let newInput = document.createElement("input")
-        let newLabel = document.createElement('label')
+        let newInput = document.createElement("input"), newLabel = document.createElement('label')
         newQuestionDiv.setAttribute("class", "answerOpation")
         newQuestionDiv.setAttribute("id", "answerOpation")
         let newInputObjectsetAttribute = {"value": i, "type": "radio", "name": "answer", "onclick": 'handleClick(event)'}
@@ -95,7 +92,7 @@ function displayAnswersToQuestions(AnswersList, index){
     for(const key in submitAnswerBtnObjectAttributes){
         submitAnswerBtn.setAttribute(`${key}`, `${submitAnswerBtnObjectAttributes[key]}`)
     }
-    submitAnswerBtn.textContent = 'Next Question'
+    submitAnswerBtn.textContent = 'Skip Question'
     submitAnswerContaner.appendChild(submitAnswerBtn)
     document.body.appendChild(submitAnswerContaner)
 }
@@ -115,8 +112,10 @@ function getUserAnwser(event){
     nextQuestion()
 }
 
+// stores the answer with an index number
 function handleClick(event){
     selectedQuestion = Number(event.target.value)
+    document.getElementById('nextQuestionBtn').textContent = "Next Question"
 }
 
 

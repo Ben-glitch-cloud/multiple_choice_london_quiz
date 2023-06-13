@@ -198,13 +198,13 @@ body {
   .indexInformationContainer .indexInnerInformationContainer {
     width: 90%;
   }
+  .indexInformationContainer .indexInnerInformationContainer h3 {
+    text-align: center;
+  }
 }
 @media (max-width: 550px) {
   .indexInformationContainer .indexInnerInformationContainer {
     width: 100%;
-  }
-  .indexInformationContainer .indexInnerInformationContainer h3 {
-    text-align: center;
   }
   .indexInformationContainer .indexInnerInformationContainer p {
     width: 90%;

@@ -9,15 +9,12 @@ function scoreResultMessage(userScore){
 function showResults(AnswersList, QandAList){
     formConatiner.style.display = 'none'
     questionContainer.style.display = 'none'
-    let endOfMessageQuiz = document.createElement('p')
-    let userScore = document.createElement("p")
+    let endOfMessageQuiz = document.createElement('p'), userScore = document.createElement("p")
     showUserQuizResults.setAttribute("id", "userQuizResults")
     showUserQuizResults.setAttribute("class", "userQuizResults")
     userScore.setAttribute("id", "userScore")
     let overAllScore = 0
-    for(let i = 0; i < QandAList.length; i++){
-        if(QandAList[i]['AnswerIndex'] === AnswersList[i]){overAllScore++}
-    }
+    for(let i = 0; i < QandAList.length; i++){if(QandAList[i]['AnswerIndex'] === AnswersList[i]){overAllScore++}}
     userScore.textContent = `${overAllScore} / 12`
     endOfMessageQuiz.textContent = scoreResultMessage(overAllScore)
     showUserQuizResults.appendChild(userScore)
@@ -28,8 +25,7 @@ function showResults(AnswersList, QandAList){
 }
 
 function displayTitleOfWrongList(){
-    let titleWrongUserAnswersCon = document.createElement('div')
-    let titleWrongUserAnswers = document.createElement('h3')
+    let titleWrongUserAnswersCon = document.createElement('div'), titleWrongUserAnswers = document.createElement('h3')
     titleWrongUserAnswersCon.setAttribute('id', 'titleWrongUserAnswersCon')
     titleWrongUserAnswersCon.setAttribute('class', 'titleWrongUserAnswersCon')
     titleWrongUserAnswers.setAttribute('id', 'titleWrongUserAnswers')
@@ -49,15 +45,12 @@ function showWrongQuestionsList(AnswersList, QandAList){
         if(AnswersList[i] !== QandAList[i]['AnswerIndex']){
             wrongAnswerFound = true
             let userIndexAnswer = AnswersList[i]
-            let answerExspandedContaner = document.createElement('div')
-            let answerBorderBreak = document.createElement('div')
+            let answerExspandedContaner = document.createElement('div'), answerBorderBreak = document.createElement('div')
             answerExspandedContaner.setAttribute('class', 'answerContainer')
             answerExspandedContaner.setAttribute('id', 'answerContainer')
             answerBorderBreak.setAttribute('class', 'answerBorderBreak')
-            let answerShownToUsers = document.createElement('p')
-            let answerExspandedText = document.createElement('p')
-            let userAnswer = document.createElement('p')
-            let corrertAnswer = document.createElement('p')
+            let answerShownToUsers = document.createElement('p'), answerExspandedText = document.createElement('p')
+            let userAnswer = document.createElement('p'), corrertAnswer = document.createElement('p')
             answerShownToUsers.textContent = `Question Asked: ${QandAList[i]['questionString']}`
             if(QandAList[i]['arrayOfAnswers'][userIndexAnswer] === undefined){
                 userAnswer.textContent = "You skiped this Question"
