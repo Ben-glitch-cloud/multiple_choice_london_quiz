@@ -3,56 +3,47 @@
 
 let indexAnswer = 0, selectedQuestion, userAnswersArray = []
 
-// let storedAnswersAndQuestions 
-
-// access main question area
-
-let MainQuizForm = document.getElementById('mainQuizForm')
-let getQuestionsBox = document.getElementById("questionBox")
-let form = document.getElementById('mainQuizForm')
-let instructions = document.getElementById('instructions')
-let formConatiner = document.getElementById('formContainer')
-let questionContainer = document.getElementById('questionContainer')
-let startBtnContainer = document.getElementById('startBtnContainer')
-let startQuizBtn = document.getElementById('startQuizBtn')
-let indexInformationContainer = document.getElementById('indexInformationContainer')
-let returnHomeBtn = document.getElementById('returnHomeBtn')
-
-// create element 
-
-let showUserQuizResultsContainer = document.createElement("div")
-showUserQuizResultsContainer.setAttribute('class', 'showUserQuizResultsContainer')
-showUserQuizResultsContainer.setAttribute('id', 'showUserQuizResultsContainer')
-
-
-let showUserQuizResults = document.createElement("div")
-let submitAnswerContaner = document.createElement('div')
-
-// return home button
-
-let returnHomeButtonContainer = document.createElement('div')
-let returnHomeButton = document.createElement('button')
+const showUserQuizResultsContainer = document.createElement("div")
+const showUserQuizResults = document.createElement("div")
+const submitAnswerContaner = document.createElement('div')
+const returnHomeButtonContainer = document.createElement('div')
 
 // setAbttributes for elements
-returnHomeButtonContainer.setAttribute('class', 'returnHomeButtonContainer')
-returnHomeButtonContainer.setAttribute('id', 'returnHomeButtonContainer')
 
-returnHomeButton.setAttribute('class', 'returnHomeBtn')
-returnHomeButton.setAttribute('id', 'returnHomeBtn')
-returnHomeButton.setAttribute('onclick', 'displayHomePage()')
+function addingAttributesToQuizResultsContainer(){
+    showUserQuizResultsContainer.setAttribute('class', 'showUserQuizResultsContainer')
+    showUserQuizResultsContainer.setAttribute('id', 'showUserQuizResultsContainer')
+}
 
-returnHomeButton.textContent = 'Return Home'
+//
 
-let restartQuiz = document.createElement("button")
-restartQuiz.setAttribute('onclick', 'reStartQuiz()')
-restartQuiz.setAttribute('class', 'reStartQuizBtn')
-restartQuiz.textContent = 'Restart Quiz'
+function addingAttributesToHomeButtonContainer(){
+    returnHomeButtonContainer.setAttribute('class', 'returnHomeButtonContainer')
+    returnHomeButtonContainer.setAttribute('id', 'returnHomeButtonContainer')
+}
 
 // change the name of returnHomeButtonContainer
-returnHomeButtonContainer.appendChild(returnHomeButton)
-returnHomeButtonContainer.appendChild(restartQuiz)
 
 submitAnswerContaner.setAttribute('class', 'nextQuestionContaner')
+
+function setupRestartButton(){
+    const restartQuiz = document.createElement("button")
+    restartQuiz.setAttribute('onclick', 'reStartQuiz()')
+    restartQuiz.setAttribute('class', 'reStartQuizBtn')
+    restartQuiz.textContent = 'Restart Quiz'
+    returnHomeButtonContainer.appendChild(restartQuiz)
+}
+
+function setupHomeButton(){
+    const returnHomeButton = document.createElement('button')
+    returnHomeButton.setAttribute('class', 'returnHomeBtn')
+    returnHomeButton.setAttribute('id', 'returnHomeBtn')
+    returnHomeButton.setAttribute('onclick', 'displayHomePage()')
+    returnHomeButton.textContent = 'Return Home'
+    returnHomeButtonContainer.appendChild(returnHomeButton)
+}
+
+// setting up home button and restart button 
 
 // first funaction
 function displayQuestionText(question="no question found", index){
@@ -182,9 +173,12 @@ function displayHomePage(){
 }
 
 function returnHomeFromTest(){
-    console.log('hello world')
     deleteOldQuestions()
     displayHomePage()
     returnHomeBtn.style.display = 'none'
 }
 
+addingAttributesToQuizResultsContainer()
+addingAttributesToHomeButtonContainer()
+setupHomeButton()
+setupRestartButton()
