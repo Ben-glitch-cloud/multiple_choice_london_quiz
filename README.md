@@ -20,10 +20,18 @@
 <p><b>6</b>: Type git clone, and then paste the URL you copied earlier.</p>
 
 ```
-git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+git clone [https://github.com/YOUR-USERNAME/YOUR-REPOSITORY](https://github.com/Ben-glitch-cloud/multiple_choice_london_quiz.git)
 ```
 
 <p><b>7</b>: Press the Enter key to create your local clone.</p>
+
+<p><b>8</b>: To run the app, open the project in Visual Studio Code.</p>
+
+<p><b>9</b>: Install the extension Live Server, which will run the project on a live server.</p>
+
+<p><b>10</b>: Find the file name index.html, and right-click on the file to find the option Open With Live Server.</p>
+
+<p><b>Now you should be all good to go✅</b></p>
 
 <h2>User Stories</h2>
 
