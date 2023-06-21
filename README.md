@@ -1,6 +1,6 @@
-<h1>multiple_choice_london_quiz</h1>
+<h1 align="center">multiple_choice_london_quiz</h1>
 
-<a href=''>Link to Quiz Coming soon</a>
+<div align="center"><a target="_blank" href='https://main--luxury-raindrop-94456f.netlify.app/'>Link to Quiz Coming soon</a></div>
 
 <h2>Description</h2>
 <p>London is a big place, with so much history and culture. That's why this project is focused on creating a multiple-choice quiz to test your knowledge of the city.</p>
@@ -46,7 +46,7 @@ So I can answer the question presented to me
 
 ```
 As a user
-I would like a next question button 
+I would like a next-question button 
 So I can move on to the next question
 ```
 <p>User storie completed✅</p>
