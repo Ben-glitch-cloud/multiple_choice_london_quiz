@@ -1,6 +1,6 @@
 <h1 align="center">multiple_choice_london_quiz</h1>
 
-<div align="center"><a target="_blank" href='https://main--luxury-raindrop-94456f.netlify.app/'>Link to Quiz Coming soon</a></div>
+<div align="center"><a target="_blank" href='https://main--luxury-raindrop-94456f.netlify.app/'>Play The London Quiz</a></div>
 
 <h2>Description</h2>
 <p>London is a big place, with so much history and culture. That's why this project is focused on creating a multiple-choice quiz to test your knowledge of the city.</p>
