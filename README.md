@@ -3,11 +3,27 @@
 <a href=''>Link to Quiz Coming soon</a>
 
 <h2>Description</h2>
-<p>London is a big place, with so much history and culture. Thats why this project is focused on creating a mutible choice quiz to test your knowledge of the city.</p>
+<p>London is a big place, with so much history and culture. That's why this project is focused on creating a multiple-choice quiz to test your knowledge of the city.</p>
 
 <h2>Getting Started</h2>
 
-<p>Coming Soon</p>
+<p><b>1</b>: On GitHub.com, navigate to the main page of the repository.</p>
+
+<p><b>2</b>: Above the list of files, click the Code button.</p>
+
+<p><b>3</b>: Copy the URL for the repository.</p>
+
+<p><b>4</b>: Open Terminal.</p>
+
+<p><b>5</b>: Change the current working directory to the location where you want the cloned directory.</p>
+
+<p><b>6</b>: Type git clone, and then paste the URL you copied earlier.</p>
+
+```
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+```
+
+<p><b>7</b>: Press the Enter key to create your local clone.</p>
 
 <h2>User Stories</h2>
 
