@@ -134,9 +134,14 @@ function startQuiz(){
     formConatiner.style.display = 'flex'
     questionContainer.style.display = 'flex'
     returnHomeBtn.style.display = 'block'
+    
+    // this will need to change, 
+
     displayQuestionNumber(storedAnswersAndQuestions, indexAnswer)
     displayQuestionText(storedAnswersAndQuestions, indexAnswer)
     displayAnswersToQuestions(storedAnswersAndQuestions, indexAnswer)
+
+
 }
 
 function removeRightAnswers(){
