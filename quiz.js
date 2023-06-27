@@ -1,7 +1,7 @@
 
 // global values to be used later
 
-let indexAnswer = 0, selectedQuestion, userAnswersArray = []
+let indexAnswer = 0, selectedQuestion, userAnswersArray = [], userQuizTypeSelected
 
 const showUserQuizResultsContainer = document.createElement("div")
 const showUserQuizResults = document.createElement("div")
@@ -114,20 +114,19 @@ function nextQuestion(){
         if(indexAnswer < 11){
             deleteOldQuestions()
             indexAnswer++
-            displayQuestionNumber(storedAnswersAndQuestions, indexAnswer)
-            displayQuestionText(storedAnswersAndQuestions, indexAnswer)
-            displayAnswersToQuestions(storedAnswersAndQuestions, indexAnswer)
+            displayQuestionNumber(userQuizTypeSelected, indexAnswer)
+            displayQuestionText(userQuizTypeSelected, indexAnswer)
+            displayAnswersToQuestions(userQuizTypeSelected, indexAnswer)
         } else {
             deleteOldQuestions()
-            showResults(userAnswersArray, storedAnswersAndQuestions)
-            showWrongQuestionsList(userAnswersArray, storedAnswersAndQuestions)
+            showResults(userAnswersArray, userQuizTypeSelected)
+            showWrongQuestionsList(userAnswersArray, userQuizTypeSelected)
             returnHomeBtn.style.display = 'none'
         }
   
 }
 
-function startQuiz(){
-    startQuizBtn.style.display = 'none'
+function startQuiz(quizType){
     startBtnContainer.style.display = 'none'
     indexInformationContainer.style.display = 'none'
     instructions.style.display = 'none'
@@ -135,13 +134,25 @@ function startQuiz(){
     questionContainer.style.display = 'flex'
     returnHomeBtn.style.display = 'block'
     
-    // this will need to change, 
+    selectQuizType(quizType)
 
-    displayQuestionNumber(storedAnswersAndQuestions, indexAnswer)
-    displayQuestionText(storedAnswersAndQuestions, indexAnswer)
-    displayAnswersToQuestions(storedAnswersAndQuestions, indexAnswer)
+    displayQuestionNumber(userQuizTypeSelected, indexAnswer)
+    displayQuestionText(userQuizTypeSelected, indexAnswer)
+    displayAnswersToQuestions(userQuizTypeSelected, indexAnswer)
 
 
+}
+
+function selectQuizType(userSelectQuiz){
+    if(userSelectQuiz === 1){
+        userQuizTypeSelected = storedAnswersAndQuestions
+        
+    } else if(userSelectQuiz === 2){
+        userQuizTypeSelected = historyOfLondonsParks
+       
+    } else {
+        throw new Error("Quiz Not Found");
+    }
 }
 
 function removeRightAnswers(){

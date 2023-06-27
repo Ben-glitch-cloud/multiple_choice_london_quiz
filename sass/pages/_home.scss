@@ -9,9 +9,18 @@ body{
     width: 100%;
     margin: 0px;
     padding: 0px;
+    column-gap: 20px;
     height: auto;
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: $breakpoint-cp-screen-large){
+    .startBtnContainer{
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+    }
 }
 
 @media (max-width: $breakpoint-smartPhone-screen-medium){

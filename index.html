@@ -18,12 +18,32 @@
             <div class="indexInnerInformationContainer" id="indexInnerInformationContainer">
                 <h3>Ready to test your knowledge about London?</h3>
                 <p>London, England is arguably one of the most famous and historically significant cities in the world. But how much do you know about the city?</p>
-                <p>Answer the next 12 questions to find out.</p>
+                <p>Choose a quiz, to find out how much you know about the city?</p>
             </div>
         </div>
 
         <div class="startBtnContainer" id="startBtnContainer">
-            <button id="startQuizBtn" class="startQuiz" onclick="startQuiz()">Start Quiz</button>
+
+            <div class="quizTypeContaner">
+                <img class="quizImageType" src="./img/Hyde_Park_London_from_1833_Schmollinger_map.jpeg">
+                <div class="quizDescription">
+                    <h4>London Parks Quiz</h4>
+                    <p>Number of Questions : 12</p>
+                    <button id="startQuizBtn" class="startQuiz" onclick="startQuiz(1)">Start Quiz</button>
+                </div>
+            </div>
+
+            <div class="quizTypeContaner">
+                <img class="quizImageType" src="./img/London_Skyline.webp">
+                <div class="quizDescription">
+                    <h4>General London Quiz</h4>
+                    <p>Number of Questions : 12</p>
+                    <button id="startQuizBtn" class="startQuiz" onclick="startQuiz(2)">Start Quiz</button>
+                </div>
+            </div>
+
+            <!-- <button id="startQuizBtn" class="startQuiz" onclick="startQuiz(1)">Start Quiz</button>
+            <button id="startQuizBtn" class="startQuiz" onclick="startQuiz(2)">Start Quiz</button> -->
         </div>
 
         <div id="questionContainer" class="questionContainer">
@@ -39,17 +59,17 @@
         <div class="instructions" id="instructions">
             <div class="instructionsHeadingAndInfo">
                 <h3>Quiz Instructions</h3>
-                <p>Currenty there is only one test, so getting started is rather simple at this moment.</p>
+                <p>How to play The London Quiz?</p>
             </div>  
                 <div class="instructionsContaner">
                     <div class="instructionsContanerHolder">
                     <div class="instructionsContanerItem">
                         <div class="instructionCount">1</div>
-                        <p>Click on the start button to begin the test.</p>
+                        <p>Click on one of the start button's to begin a quiz.</p>
                     </div>
                     <div class="instructionsContanerItem">
                         <div class="instructionCount">2</div>
-                        <p>Click on one of four answers to the question, or skip the question if your not sure.</p>
+                        <p>Click on one of the answers to the question, or skip the question if your not sure.</p>
                     </div>
                     <div class="instructionsContanerItem">
                         <div class="instructionCount">3</div>
@@ -69,6 +89,7 @@
 
     </body>
     <script src="./accessElementsId.js"></script>
+    <script src="./history_of_londons_parks_questions_and_answers.js"></script>
     <script src="./quiz.js"></script>
     <script src="./stored_questions_and_answers.js"></script>
     <script src="./user_quiz_score.js"></script>
