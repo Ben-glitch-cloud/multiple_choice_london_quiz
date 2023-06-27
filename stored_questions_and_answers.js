@@ -1,4 +1,4 @@
-const storedAnswersAndQuestions = [{index: 1, 
+const storedAnswersAndQuestions = {'quizTitle': 'GernalLondonQuiz', 'quizArray': [{index: 1, 
     questionString: "What year did the greate fire of London start?", 
     arrayOfAnswers: ["1567", "1665", "1666", "1731"], 
     AnswerIndex: 2, 
@@ -56,5 +56,6 @@ const storedAnswersAndQuestions = [{index: 1,
     questionString: "When did the Romans found London or Londinium?", 
     arrayOfAnswers: ["10 BC", "47 AD", "120 AD", "320 AD"], 
     AnswerIndex: 1, 
-    explanationToIncorrectAns: 'Ancient Romans founded a port and trading settlement called Londinium in 43 A.D.'}]
+    explanationToIncorrectAns: 'Ancient Romans founded a port and trading settlement called Londinium in 43 A.D.'}
+]}
 

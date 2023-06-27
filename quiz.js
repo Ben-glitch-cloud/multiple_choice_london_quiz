@@ -28,7 +28,11 @@ submitAnswerContaner.setAttribute('class', 'nextQuestionContaner')
 
 function setupRestartButton(){
     const restartQuiz = document.createElement("button")
+
+
     restartQuiz.setAttribute('onclick', 'reStartQuiz()')
+
+
     restartQuiz.setAttribute('class', 'reStartQuizBtn')
     restartQuiz.textContent = 'Restart Quiz'
     returnHomeButtonContainer.appendChild(restartQuiz)
@@ -114,13 +118,13 @@ function nextQuestion(){
         if(indexAnswer < 11){
             deleteOldQuestions()
             indexAnswer++
-            displayQuestionNumber(userQuizTypeSelected, indexAnswer)
-            displayQuestionText(userQuizTypeSelected, indexAnswer)
-            displayAnswersToQuestions(userQuizTypeSelected, indexAnswer)
+            displayQuestionNumber(userQuizTypeSelected['quizArray'], indexAnswer)
+            displayQuestionText(userQuizTypeSelected['quizArray'], indexAnswer)
+            displayAnswersToQuestions(userQuizTypeSelected['quizArray'], indexAnswer)
         } else {
             deleteOldQuestions()
-            showResults(userAnswersArray, userQuizTypeSelected)
-            showWrongQuestionsList(userAnswersArray, userQuizTypeSelected)
+            showResults(userAnswersArray, userQuizTypeSelected['quizArray'])
+            showWrongQuestionsList(userAnswersArray, userQuizTypeSelected['quizArray'])
             returnHomeBtn.style.display = 'none'
         }
   
@@ -136,20 +140,19 @@ function startQuiz(quizType){
     
     selectQuizType(quizType)
 
-    displayQuestionNumber(userQuizTypeSelected, indexAnswer)
-    displayQuestionText(userQuizTypeSelected, indexAnswer)
-    displayAnswersToQuestions(userQuizTypeSelected, indexAnswer)
+    displayQuestionNumber(userQuizTypeSelected['quizArray'], indexAnswer)
+    displayQuestionText(userQuizTypeSelected['quizArray'], indexAnswer)
+    displayAnswersToQuestions(userQuizTypeSelected['quizArray'], indexAnswer)
 
 
 }
 
 function selectQuizType(userSelectQuiz){
+    console.log(userQuizTypeSelected, 'quiz')
     if(userSelectQuiz === 1){
         userQuizTypeSelected = storedAnswersAndQuestions
-        
     } else if(userSelectQuiz === 2){
         userQuizTypeSelected = historyOfLondonsParks
-       
     } else {
         throw new Error("Quiz Not Found");
     }
@@ -167,10 +170,15 @@ function reStartQuiz(){
     formConatiner.style.display = 'flex'
     questionContainer.style.display = 'flex'
     while(showUserQuizResults.lastElementChild){ showUserQuizResults.removeChild(showUserQuizResults.lastElementChild)}
-    indexAnswer = 0, userAnswersArray = []
+    indexAnswer = 0, userAnswersArray = [], 
     returnHomeButtonContainer.remove()
     removeRightAnswers()
-    startQuiz()
+    // add type number in startQuiz
+    if(userQuizTypeSelected['quizTitle'] === 'GernalLondonQuiz'){
+        startQuiz(1)
+    } else if(userQuizTypeSelected['quizTitle'] === 'HistoryOfLondonParks'){
+        startQuiz(2)
+    }
 }
 
 // delete the users score from the test

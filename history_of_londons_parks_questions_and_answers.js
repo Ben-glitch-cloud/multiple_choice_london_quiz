@@ -1,4 +1,4 @@
-const historyOfLondonsParks = [{index: 1, 
+const historyOfLondonsParks = {'quizTitle': 'HistoryOfLondonParks', 'quizArray': [{index: 1, 
     questionString: "What was the name of the first public park in London?", 
     arrayOfAnswers: ["Battersea Park", "Finsbury Park", "Southwark Park", "Victoria Park"], 
     AnswerIndex: 3, 
@@ -56,4 +56,4 @@ const historyOfLondonsParks = [{index: 1,
     arrayOfAnswers: ["Deer", "Sheep", "Cows", "Horses"], 
     AnswerIndex: 0, 
     explanationToIncorrectAns: "Richmond Park is a National Nature Reserve and deer park with 630 Red and Fallow deer roaming freely since 1637."}
-    ]
+    ]}
