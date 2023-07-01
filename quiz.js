@@ -67,23 +67,18 @@ function displayQuestionNumber(AnswersList, index){
 // loop through all potenal answers
 
 function displayAnswersToQuestions(AnswersList, index){
-
-    for(let i = 0; i < AnswersList[index]['arrayOfAnswers'].length; i++){
-        let newQuestionDiv = document.createElement("div") 
-        let newInput = document.createElement("input"), newLabel = document.createElement('label')
-        newQuestionDiv.setAttribute("class", "answerOpation")
-        newQuestionDiv.setAttribute("id", "answerOpation")
-        let newInputObjectsetAttribute = {"value": i, "type": "radio", "name": "answer", "onclick": 'handleClick(event)'}
-        for(const key in newInputObjectsetAttribute){
-            newInput.setAttribute(`${key}`, `${newInputObjectsetAttribute[key]}`)
-        }
-        newLabel.innerHTML = AnswersList[index]['arrayOfAnswers'][i]
-        newQuestionDiv.appendChild(newInput)
-        newQuestionDiv.appendChild(newLabel)
-        MainQuizForm.appendChild(newQuestionDiv)
+    
+    if(AnswersList[index]['questionType'] === 'singleChoice'){
+        questionTypeQuiz(AnswersList, index)
+    } else if(AnswersList[index]['questionType'] === 'multChoice') {
+        multipleChoiceQuestion(AnswersList, index)
     }
+    
+
+    
     let submitAnswerBtn = document.createElement('button')
     const submitAnswerBtnObjectAttributes = {'form': 'mainQuizForm', 'type': 'submit', 'id': 'nextQuestionBtn', 'class': 'nextQuestionBtn'}
+
     for(const key in submitAnswerBtnObjectAttributes){
         submitAnswerBtn.setAttribute(`${key}`, `${submitAnswerBtnObjectAttributes[key]}`)
     }
@@ -108,14 +103,15 @@ function getUserAnwser(event){
 }
 
 // stores the answer with an index number
-function handleClick(event){
+function handleSingleClick(event){
     selectedQuestion = Number(event.target.value)
     document.getElementById('nextQuestionBtn').textContent = "Next Question"
 }
 
 
 function nextQuestion(){ 
-        if(indexAnswer < 11){
+    console.log(userQuizTypeSelected, 'quiz')
+        if(indexAnswer < userQuizTypeSelected['quizArray'].length - 1){
             deleteOldQuestions()
             indexAnswer++
             displayQuestionNumber(userQuizTypeSelected['quizArray'], indexAnswer)
@@ -148,7 +144,6 @@ function startQuiz(quizType){
 }
 
 function selectQuizType(userSelectQuiz){
-    console.log(userQuizTypeSelected, 'quiz')
     if(userSelectQuiz === 1){
         userQuizTypeSelected = storedAnswersAndQuestions
     } else if(userSelectQuiz === 2){

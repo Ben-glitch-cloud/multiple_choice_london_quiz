@@ -51,15 +51,15 @@ function showWrongQuestionsList(AnswersList, QandAList){
             answerBorderBreak.setAttribute('class', 'answerBorderBreak')
             let answerShownToUsers = document.createElement('p'), answerExspandedText = document.createElement('p')
             let userAnswer = document.createElement('p'), corrertAnswer = document.createElement('p')
-            answerShownToUsers.textContent = `Question Asked: ${QandAList[i]['questionString']}`
+            answerShownToUsers.innerHTML = `<b>Question Asked:</b> ${QandAList[i]['questionString']}`
             if(QandAList[i]['arrayOfAnswers'][userIndexAnswer] === undefined){
                 userAnswer.textContent = "You skiped this Question"
             } else {
-                userAnswer.textContent = `Your answer : ${QandAList[i]['arrayOfAnswers'][userIndexAnswer]}`
+                userAnswer.innerHTML = `<b>Your answer</b> : ${QandAList[i]['arrayOfAnswers'][userIndexAnswer]}`
             }
             let storedAnswer = QandAList[i]['AnswerIndex']
-            corrertAnswer.textContent = `Correct answer : ${QandAList[i]['arrayOfAnswers'][storedAnswer]}`
-            answerExspandedText.textContent = `Explanation : ${QandAList[i]['explanationToIncorrectAns']}`
+            corrertAnswer.innerHTML = `<b>Correct answer</b> : ${QandAList[i]['arrayOfAnswers'][storedAnswer]}`
+            answerExspandedText.innerHTML = `<b>Explanation</b> : ${QandAList[i]['explanationToIncorrectAns']}`
             answerExspandedContaner.appendChild(answerShownToUsers)
             answerExspandedContaner.appendChild(userAnswer)
             answerExspandedContaner.appendChild(corrertAnswer)
