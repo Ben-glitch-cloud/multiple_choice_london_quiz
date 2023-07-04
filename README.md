@@ -102,7 +102,7 @@ As a user
 I would like to take different tests
 So I can practice my knowledge of London
 ```
-<p>User storie not started 🛑</p>
+<p>User storie completed ✅</p>
 
 <h2>Tech Stack</h2>
 
