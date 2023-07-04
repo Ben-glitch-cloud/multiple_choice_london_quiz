@@ -1,7 +1,7 @@
 
 // global values to be used later
 
-let indexAnswer = 0, selectedQuestion, userAnswersArray = [], userQuizTypeSelected
+let indexAnswer = 0, selectedQuestion, userAnswersArray = [], userQuizTypeSelected, selectedQuestionArray = []
 
 const showUserQuizResultsContainer = document.createElement("div")
 const showUserQuizResults = document.createElement("div")
@@ -64,6 +64,16 @@ function displayQuestionNumber(AnswersList, index){
     getQuestionsBox.appendChild(indexQuestionPlace)
 }
 
+function displayQuestionInfoAboutMultibleAns(questionType){
+    if(questionType[indexAnswer]['questionType'] === 'multChoice'){
+        let answerInfo = document.createElement('p')
+        // add styling to this element. 
+        answerInfo .setAttribute('id', 'questionInfo')
+        answerInfo.textContent = 'This question has more than one answer.'
+        getQuestionsBox.appendChild(answerInfo)
+    }
+}
+
 // loop through all potenal answers
 
 function displayAnswersToQuestions(AnswersList, index){
@@ -73,8 +83,6 @@ function displayAnswersToQuestions(AnswersList, index){
     } else if(AnswersList[index]['questionType'] === 'multChoice') {
         multipleChoiceQuestion(AnswersList, index)
     }
-    
-
     
     let submitAnswerBtn = document.createElement('button')
     const submitAnswerBtnObjectAttributes = {'form': 'mainQuizForm', 'type': 'submit', 'id': 'nextQuestionBtn', 'class': 'nextQuestionBtn'}
@@ -88,17 +96,28 @@ function displayAnswersToQuestions(AnswersList, index){
 }
 
 
-// deletes all child elements in the MainQuiz div
+// deletes all child elements in the MainQuiz div 
 function deleteOldQuestions(){
     while(submitAnswerContaner.lastChild){submitAnswerContaner.removeChild(submitAnswerContaner.lastElementChild)}
     while(MainQuizForm.lastElementChild){MainQuizForm.removeChild(MainQuizForm.lastElementChild)}
     while(getQuestionsBox.lastElementChild){getQuestionsBox.removeChild(getQuestionsBox.lastElementChild)}
 }
 
+// update this method so it takes the answers from both the multible choice questions and the single answers.
 function getUserAnwser(event){
+    //
     event.preventDefault();
-    userAnswersArray.push(selectedQuestion)
-    selectedQuestion = null
+    // all working well, there will be a few changes needed to the test before starting. 
+    console.log(userQuizTypeSelected['quizArray'][indexAnswer]['questionType'], 'saved')
+    if(userQuizTypeSelected['quizArray'][indexAnswer]['questionType'] === 'singleChoice'){
+        userAnswersArray.push(selectedQuestion)
+        selectedQuestion = null
+    } else if(userQuizTypeSelected['quizArray'][indexAnswer]['questionType'] === 'multChoice'){
+        selectedQuestionArray.sort((a, b) => a - b)
+        userAnswersArray.push(selectedQuestionArray)
+        selectedQuestionArray = []
+    }
+    console.log(userAnswersArray)
     nextQuestion()
 }
 
@@ -108,14 +127,22 @@ function handleSingleClick(event){
     document.getElementById('nextQuestionBtn').textContent = "Next Question"
 }
 
+function handleMultClick(event){
+    if(selectedQuestionArray.indexOf(Number(event.target.value)) === -1){
+        selectedQuestionArray.push(Number(event.target.value))
+    } else {
+        selectedQuestionArray = selectedQuestionArray.filter((item) => item !== Number(event.target.value))
+    }
+}
+
 
 function nextQuestion(){ 
-    console.log(userQuizTypeSelected, 'quiz')
         if(indexAnswer < userQuizTypeSelected['quizArray'].length - 1){
             deleteOldQuestions()
             indexAnswer++
             displayQuestionNumber(userQuizTypeSelected['quizArray'], indexAnswer)
             displayQuestionText(userQuizTypeSelected['quizArray'], indexAnswer)
+            displayQuestionInfoAboutMultibleAns(userQuizTypeSelected['quizArray'])
             displayAnswersToQuestions(userQuizTypeSelected['quizArray'], indexAnswer)
         } else {
             deleteOldQuestions()
@@ -138,6 +165,7 @@ function startQuiz(quizType){
 
     displayQuestionNumber(userQuizTypeSelected['quizArray'], indexAnswer)
     displayQuestionText(userQuizTypeSelected['quizArray'], indexAnswer)
+    displayQuestionInfoAboutMultibleAns(userQuizTypeSelected['quizArray'])
     displayAnswersToQuestions(userQuizTypeSelected['quizArray'], indexAnswer)
 
 

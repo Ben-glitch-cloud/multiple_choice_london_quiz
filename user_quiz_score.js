@@ -42,7 +42,7 @@ function showWrongQuestionsList(AnswersList, QandAList){
     returnAnswerToWrongQuestionsCon.setAttribute('id', 'wrongQuestionsContainer')
 
     for(let i = 0; i < AnswersList.length; i++){
-        if(AnswersList[i] !== QandAList[i]['AnswerIndex']){
+        if(AnswersList[i] !== QandAList[i]['AnswerIndex'] && !Array.isArray(QandAList[i]['AnswerIndex'])){
             wrongAnswerFound = true
             let userIndexAnswer = AnswersList[i]
             let answerExspandedContaner = document.createElement('div'), answerBorderBreak = document.createElement('div')
@@ -66,6 +66,35 @@ function showWrongQuestionsList(AnswersList, QandAList){
             answerExspandedContaner.appendChild(answerExspandedText) 
             answerExspandedContaner.appendChild(answerBorderBreak) 
             returnAnswerToWrongQuestionsCon.appendChild(answerExspandedContaner)
+        } else if(Array.isArray(QandAList[i]['AnswerIndex'])){
+
+            let userAnswerString = ""
+            let storedAnswerString = ""
+
+            storedAnswerString = QandAList[i]['AnswerIndex'].map((item) => QandAList[i]['arrayOfAnswers'][item]).join(', ')
+            userAnswerString = AnswersList[i].map((item) => QandAList[i]['arrayOfAnswers'][item]).join(', ')
+            console.log(storedAnswerString, userAnswerString)
+
+            if(storedAnswerString !== userAnswerString){
+                answerExspandedContaner = document.createElement('div'), answerBorderBreak = document.createElement('div')
+                answerExspandedContaner.setAttribute('class', 'answerContainer')
+                answerExspandedContaner.setAttribute('id', 'answerContainer')
+                answerBorderBreak.setAttribute('class', 'answerBorderBreak')
+                answerShownToUsers = document.createElement('p'), answerExspandedText = document.createElement('p')
+                userAnswer = document.createElement('p'), corrertAnswer = document.createElement('p')
+                answerShownToUsers.innerHTML = `<b>Question Asked:</b> ${QandAList[i]['questionString']}`
+                userAnswer.innerHTML = `<b>Your answer</b> : ${userAnswerString}`
+                corrertAnswer.innerHTML = `<b>Correct answer</b> : ${storedAnswerString}`
+                answerExspandedText.innerHTML = `<b>Explanation</b> : ${QandAList[i]['explanationToIncorrectAns']}`
+                answerExspandedContaner.appendChild(answerShownToUsers)
+                answerExspandedContaner.appendChild(userAnswer)
+                answerExspandedContaner.appendChild(corrertAnswer)
+                answerExspandedContaner.appendChild(answerExspandedText) 
+                answerExspandedContaner.appendChild(answerBorderBreak) 
+                returnAnswerToWrongQuestionsCon.appendChild(answerExspandedContaner)
+            }
+
+
         }
     }
     // this must be removed before the user restartes the quiz:)
