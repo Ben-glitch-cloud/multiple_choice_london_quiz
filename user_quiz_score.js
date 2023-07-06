@@ -1,3 +1,9 @@
+// global values
+let wrongAnswerFound = false
+let returnAnswerToWrongQuestionsCon = document.createElement('div')
+returnAnswerToWrongQuestionsCon.setAttribute('class', 'wrongQuestionsContainer')
+returnAnswerToWrongQuestionsCon.setAttribute('id', 'wrongQuestionsContainer')
+
 function scoreResultMessage(userScore){
     if(userScore === 12){ return 'A Perfect Score'}
     if(userScore < 11 &&  userScore >= 9){ return 'A Great Score'}
@@ -35,69 +41,43 @@ function displayTitleOfWrongList(){
     document.body.appendChild(titleWrongUserAnswersCon)
 }
 
-function showWrongQuestionsList(AnswersList, QandAList){
-    let wrongAnswerFound = false
-    let returnAnswerToWrongQuestionsCon = document.createElement('div')
-    returnAnswerToWrongQuestionsCon.setAttribute('class', 'wrongQuestionsContainer')
-    returnAnswerToWrongQuestionsCon.setAttribute('id', 'wrongQuestionsContainer')
 
-    for(let i = 0; i < AnswersList.length; i++){
-        if(AnswersList[i] !== QandAList[i]['AnswerIndex'] && !Array.isArray(QandAList[i]['AnswerIndex'])){
+
+function displayWrongQuestion(askedQuestion, userAnswerGiven, storedCorrectAnswer, explanation){
             wrongAnswerFound = true
-            let userIndexAnswer = AnswersList[i]
             let answerExspandedContaner = document.createElement('div'), answerBorderBreak = document.createElement('div')
             answerExspandedContaner.setAttribute('class', 'answerContainer')
             answerExspandedContaner.setAttribute('id', 'answerContainer')
             answerBorderBreak.setAttribute('class', 'answerBorderBreak')
             let answerShownToUsers = document.createElement('p'), answerExspandedText = document.createElement('p')
             let userAnswer = document.createElement('p'), corrertAnswer = document.createElement('p')
-            answerShownToUsers.innerHTML = `<b>Question Asked:</b> ${QandAList[i]['questionString']}`
-            if(QandAList[i]['arrayOfAnswers'][userIndexAnswer] === undefined){
-                userAnswer.textContent = "You skiped this Question"
-            } else {
-                userAnswer.innerHTML = `<b>Your answer</b> : ${QandAList[i]['arrayOfAnswers'][userIndexAnswer]}`
-            }
-            let storedAnswer = QandAList[i]['AnswerIndex']
-            corrertAnswer.innerHTML = `<b>Correct answer</b> : ${QandAList[i]['arrayOfAnswers'][storedAnswer]}`
-            answerExspandedText.innerHTML = `<b>Explanation</b> : ${QandAList[i]['explanationToIncorrectAns']}`
+            answerShownToUsers.innerHTML = `<b>Question Asked:</b> ${askedQuestion}`
+            userAnswerGiven === undefined ? userAnswer.textContent = "You skiped this Question" : userAnswer.innerHTML = `<b>Your answer</b> : ${userAnswerGiven}`
+            corrertAnswer.innerHTML = `<b>Correct answer</b> : ${storedCorrectAnswer}`
+            answerExspandedText.innerHTML = `<b>Explanation</b> : ${explanation}`
             answerExspandedContaner.appendChild(answerShownToUsers)
             answerExspandedContaner.appendChild(userAnswer)
             answerExspandedContaner.appendChild(corrertAnswer)
             answerExspandedContaner.appendChild(answerExspandedText) 
             answerExspandedContaner.appendChild(answerBorderBreak) 
             returnAnswerToWrongQuestionsCon.appendChild(answerExspandedContaner)
+}
+
+
+function showWrongQuestionsList(AnswersList, QandAList){
+    for(let i = 0; i < AnswersList.length; i++){
+        if(AnswersList[i] !== QandAList[i]['AnswerIndex'] && !Array.isArray(QandAList[i]['AnswerIndex'])){
+            let userIndexAnswer = AnswersList[i], storedAnswer = QandAList[i]['AnswerIndex']
+            displayWrongQuestion(QandAList[i]['questionString'], QandAList[i]['arrayOfAnswers'][userIndexAnswer], QandAList[i]['arrayOfAnswers'][storedAnswer], QandAList[i]['explanationToIncorrectAns'])
         } else if(Array.isArray(QandAList[i]['AnswerIndex'])){
-
-            let userAnswerString = ""
-            let storedAnswerString = ""
-
+            let userAnswerString = "", storedAnswerString = ""
             storedAnswerString = QandAList[i]['AnswerIndex'].map((item) => QandAList[i]['arrayOfAnswers'][item]).join(', ')
             userAnswerString = AnswersList[i].map((item) => QandAList[i]['arrayOfAnswers'][item]).join(', ')
-            console.log(storedAnswerString, userAnswerString)
-
             if(storedAnswerString !== userAnswerString){
-                answerExspandedContaner = document.createElement('div'), answerBorderBreak = document.createElement('div')
-                answerExspandedContaner.setAttribute('class', 'answerContainer')
-                answerExspandedContaner.setAttribute('id', 'answerContainer')
-                answerBorderBreak.setAttribute('class', 'answerBorderBreak')
-                answerShownToUsers = document.createElement('p'), answerExspandedText = document.createElement('p')
-                userAnswer = document.createElement('p'), corrertAnswer = document.createElement('p')
-                answerShownToUsers.innerHTML = `<b>Question Asked:</b> ${QandAList[i]['questionString']}`
-                userAnswer.innerHTML = `<b>Your answer</b> : ${userAnswerString}`
-                corrertAnswer.innerHTML = `<b>Correct answer</b> : ${storedAnswerString}`
-                answerExspandedText.innerHTML = `<b>Explanation</b> : ${QandAList[i]['explanationToIncorrectAns']}`
-                answerExspandedContaner.appendChild(answerShownToUsers)
-                answerExspandedContaner.appendChild(userAnswer)
-                answerExspandedContaner.appendChild(corrertAnswer)
-                answerExspandedContaner.appendChild(answerExspandedText) 
-                answerExspandedContaner.appendChild(answerBorderBreak) 
-                returnAnswerToWrongQuestionsCon.appendChild(answerExspandedContaner)
+                displayWrongQuestion(QandAList[i]['questionString'], userAnswerString, storedAnswerString, QandAList[i]['explanationToIncorrectAns'])
             }
-
-
         }
     }
-    // this must be removed before the user restartes the quiz:)
 
     if(wrongAnswerFound){ displayTitleOfWrongList() }
 

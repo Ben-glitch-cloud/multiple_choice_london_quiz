@@ -211,7 +211,8 @@ function deleteUserScore(){
 }
 
 function displayHomePage(){
-    deleteUserScore(), removeRightAnswers()
+    deleteUserScore()
+    removeRightAnswers()
     indexAnswer = 0, userAnswersArray = []
     startQuizBtn.style.display = 'block'
     startBtnContainer.style.display = 'flex'
